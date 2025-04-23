@@ -112,6 +112,8 @@ and got the default Welcome to NGINX page.
 
 📝 This demo shows LoadBalancer services don’t work natively on local Docker Desktop, but the concept is practiced here for readiness in a cloud Kubernetes setup.
 
+📖 Learn more about LoadBalancer: https://kubernetes.io/docs/concepts/services-networking/service/
+
 ## 🌟 Author
 **Sathya**  
 DevOps Enthusiast | Docker & Kubernetes Learner
