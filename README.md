@@ -79,10 +79,38 @@ Include a screenshot of the browser displaying the NGINX welcome page via `http:
 
 ## 📁 Files in this Project
 - `nginx-deployment.yaml`
+- `nginx-loadbalancer.yaml`
 - `README.md`
 - (optional) `screenshot.png`
 
 ---
+
+---🧪 Additional Exploration – LoadBalancer Service (Local Demo)
+Although LoadBalancer type services are designed for cloud environments (like AWS or GCP), I attempted to simulate this locally using Docker Desktop’s Kubernetes:
+
+bash
+
+kubectl expose deployment nginx-deployment --type=LoadBalancer --name=nginx-loadbalancer
+This created a service:
+
+bash
+kubectl get svc
+
+Output:
+nginx-loadbalancer   LoadBalancer   10.109.6.166    localhost   80:32089/TCP
+🔍 However, when I accessed http://localhost:32089, the connection was refused.
+This is expected, as Docker Desktop doesn’t provision a real cloud LoadBalancer.
+
+✅ To verify NGINX was working, I ran:
+
+bash
+kubectl exec -it <nginx-pod-name> -- curl localhost
+and got the default Welcome to NGINX page.
+
+✅ Later, I tested again by manually creating a NodePort on a free port 8085, and it worked via:
+📎 http://127.0.0.1:8085
+
+📝 This demo shows LoadBalancer services don’t work natively on local Docker Desktop, but the concept is practiced here for readiness in a cloud Kubernetes setup.
 
 ## 🌟 Author
 **Sathya**  
@@ -93,14 +121,5 @@ DevOps Enthusiast | Docker & Kubernetes Learner
 ## 🔗 GitHub
 [GitHub Repository →](https://github.com/PillaiSathya/Kubernetes-Deployment-Demo)
 
----
 
-## 📊 Next Topics
-- Kubernetes Rolling Updates
-- Kubernetes Services (ClusterIP vs NodePort vs LoadBalancer)
-- Helm Charts
-
----
-
-Let's deploy like a pro! 🤩
 
