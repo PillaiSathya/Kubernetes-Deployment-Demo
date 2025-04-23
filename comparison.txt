@@ -1,0 +1,16 @@
+🔄 Kubernetes Service Types – Comparison Chart
+
+Service Type	Purpose	Accessible From	Use Case
+ClusterIP	Default; gives a service IP	Inside the cluster only	Internal communication (e.g., backend ↔ database)
+NodePort	Exposes service via a port on each node	External (host IP:port)	Local/dev setups, exposing pods outside the cluster
+LoadBalancer	Integrates with cloud provider LB	External (auto IP)	Production on cloud (AWS, GCP, Azure)
+ExternalName	Maps to external DNS name	Redirects to external	Access external services (e.g., mysql.example.com)
+Headless	No cluster IP; returns pod IPs directly	Inside cluster	Stateful sets, direct pod discovery
+💡 In your local setup (Docker Desktop):
+
+Use NodePort to access services from the browser.
+
+Use ClusterIP for internal pod communication.
+
+Use LoadBalancer only as a simulation (since it maps to localhost).
+
