@@ -112,6 +112,20 @@ and got the default Welcome to NGINX page.
 
 📝 This demo shows LoadBalancer services don’t work natively on local Docker Desktop, but the concept is practiced here for readiness in a cloud Kubernetes setup.
 
+🔗 Accessing the LoadBalancer Service Locally (via Port Forward)
+Since Docker Desktop’s Kubernetes setup doesn’t assign a real external IP for LoadBalancer type services, we use port forwarding to access them locally.
+
+Run this command in your terminal:
+
+bash
+Copy
+Edit
+kubectl port-forward service/nginx-loadbalancer 8085:80
+Then visit http://localhost:8085 in your browser to see the NGINX welcome page.
+
+💡 Note: Keep the terminal open while port forwarding is active. Press Ctrl + C to stop.
+
+
 📖 Learn more about LoadBalancer: https://kubernetes.io/docs/concepts/services-networking/service/
 
 ## 🌟 Author
